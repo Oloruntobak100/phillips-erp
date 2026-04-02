@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { MainLayout } from '@/components/layout/MainLayout';
@@ -26,7 +26,10 @@ import CISReturnsPage from '@/pages/finance/CISReturnsPage';
 import ReportsPage from '@/pages/reports/ReportsPage';
 import SettingsPage from '@/pages/settings/SettingsPage';
 import WelcomeScreen from '@/components/WelcomeScreen';
+import SignInPage from '@/pages/auth/SignInPage';
+import SignUpPage from '@/pages/auth/SignUpPage';
 import { useEntityStore } from '@/store/entityStore';
+import { useAuthStore } from '@/store/authStore';
 import { api } from '@/lib/api';
 
 // ============================================================================
@@ -39,6 +42,7 @@ function App() {
   const [hasCompletedWelcome, setHasCompletedWelcome] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { activeCompany, activeCompanyType } = useEntityStore();
+  const sessionEmail = useAuthStore((s) => s.email);
   
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -105,6 +109,16 @@ function App() {
           }}
         />
       </div>
+    );
+  }
+
+  if (!sessionEmail) {
+    return (
+      <Routes>
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="*" element={<Navigate to="/sign-in" replace />} />
+      </Routes>
     );
   }
 

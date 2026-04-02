@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Bell, 
@@ -24,6 +25,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { EntitySwitcher } from '@/components/custom/EntitySwitcher';
 import { useActiveCompany } from '@/store/entityStore';
+import { useAuthStore } from '@/store/authStore';
 import { useGuidanceStore } from '@/store/guidanceStore';
 
 // ============================================================================
@@ -75,8 +77,15 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) => {
+  const navigate = useNavigate();
   const activeCompany = useActiveCompany();
+  const sessionEmail = useAuthStore((s) => s.email);
+  const displayName = useAuthStore((s) => s.displayName);
+  const signOut = useAuthStore((s) => s.signOut);
   const { toggleGuidance, guidanceEnabled } = useGuidanceStore();
+
+  const userLabel = displayName || sessionEmail?.split('@')[0] || 'User';
+  const userSubtitle = displayName ? sessionEmail ?? 'Demo session' : sessionEmail ?? 'Demo session';
   
   const theme = activeCompany.theme;
   const unreadCount = NOTIFICATIONS.filter(n => !n.read).length;
@@ -249,9 +258,11 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) =
                 >
                   <User className="w-4 h-4 text-white" />
                 </div>
-                <div className="hidden sm:block text-left">
-                  <p className="text-sm font-medium text-white">Sarah Johnson</p>
-                  <p className="text-xs text-slate-400">Office Manager</p>
+                <div className="hidden sm:block text-left max-w-[10rem] truncate">
+                  <p className="text-sm font-medium text-white truncate">{userLabel}</p>
+                  <p className="text-xs text-slate-400 truncate" title={userSubtitle}>
+                    {userSubtitle}
+                  </p>
                 </div>
               </motion.button>
             </DropdownMenuTrigger>
@@ -274,7 +285,13 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) =
                 Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator style={{ backgroundColor: 'rgba(71, 85, 105, 0.3)' }} />
-              <DropdownMenuItem className="text-red-400 cursor-pointer">
+              <DropdownMenuItem
+                className="text-red-400 cursor-pointer"
+                onClick={() => {
+                  signOut();
+                  navigate('/sign-in', { replace: true });
+                }}
+              >
                 <LogOut className="w-4 h-4 mr-2" />
                 Log out
               </DropdownMenuItem>
