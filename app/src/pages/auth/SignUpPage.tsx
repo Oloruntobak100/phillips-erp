@@ -99,7 +99,7 @@ const SignUpPage: React.FC = () => {
                   id="signup-password"
                   type="password"
                   autoComplete="new-password"
-                  placeholder="Anything accepted"
+                  placeholder="enter password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="border-slate-700 bg-slate-950/50 pl-10 text-white placeholder:text-slate-600"
