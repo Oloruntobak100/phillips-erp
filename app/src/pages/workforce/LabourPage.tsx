@@ -10,7 +10,7 @@ import {
   Edit2,
   Trash2,
   FileSpreadsheet,
-  DollarSign,
+  PoundSterling,
   Clock,
   Briefcase,
   TrendingUp,
@@ -292,7 +292,7 @@ const LabourPage: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: 'Total Hours', value: totalHours.toFixed(1), icon: Clock, color: '#3B82F6' },
-          { label: 'Total Cost', value: `£${totalCost.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`, icon: DollarSign, color: '#10B981' },
+          { label: 'Total Cost', value: `£${totalCost.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`, icon: PoundSterling, color: '#10B981' },
           { label: 'Pending Entries', value: pendingEntries.toString(), icon: Briefcase, color: '#F59E0B' },
           { label: 'Approved Entries', value: approvedEntries.toString(), icon: CheckCircle2, color: '#8B5CF6' },
         ].map((stat, index) => (

@@ -32,16 +32,16 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
             className="mx-auto mb-6 flex h-16 max-w-xs items-center justify-center gap-4 rounded-2xl bg-slate-900/80 px-4 py-2 ring-1 ring-slate-800"
           >
             <img
-              src={COMPANIES.construction.logo}
-              alt={COMPANIES.construction.name}
+              src={COMPANIES.environmental.logo}
+              alt={COMPANIES.environmental.name}
               className="h-12 w-auto max-w-[45%] object-contain"
             />
             <span className="text-slate-600" aria-hidden>
               |
             </span>
             <img
-              src={COMPANIES.environmental.logo}
-              alt={COMPANIES.environmental.name}
+              src={COMPANIES.construction.logo}
+              alt={COMPANIES.construction.name}
               className="h-12 w-auto max-w-[45%] object-contain"
             />
           </motion.div>
@@ -49,41 +49,13 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
           <p className="text-slate-400">Select your company to continue</p>
         </div>
 
-        {/* Company Selection */}
+        {/* Company Selection — Environmental left, Construction right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Phillips Construction */}
+          {/* Phillips Barnes Environmental */}
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            whileHover={{ scale: 1.02, y: -4 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => handleSelectCompany(1)}
-            className="group relative p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition-all"
-          >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="relative">
-              <div className="mb-4 flex h-16 w-full items-center justify-center rounded-xl bg-white px-3 py-2 ring-1 ring-slate-800">
-                <img
-                  src={COMPANIES.construction.logo}
-                  alt={COMPANIES.construction.name}
-                  className="max-h-14 w-auto max-w-full object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-1">Phillips Construction</h3>
-              <p className="text-sm text-slate-400 mb-4">Building & Restoration Services</p>
-              <div className="flex items-center text-blue-400 text-sm font-medium">
-                <span>Enter Portal</span>
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </motion.button>
-
-          {/* Phillips Barnes Environmental */}
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
             whileHover={{ scale: 1.02, y: -4 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleSelectCompany(2)}
@@ -101,6 +73,34 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
               <h3 className="text-xl font-semibold text-white mb-1">Phillips Barnes Environmental</h3>
               <p className="text-sm text-slate-400 mb-4">Environmental Services</p>
               <div className="flex items-center text-teal-400 text-sm font-medium">
+                <span>Enter Portal</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </motion.button>
+
+          {/* Phillips Construction */}
+          <motion.button
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.02, y: -4 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => handleSelectCompany(1)}
+            className="group relative p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition-all"
+          >
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative">
+              <div className="mb-4 flex h-16 w-full items-center justify-center rounded-xl bg-white px-3 py-2 ring-1 ring-slate-800">
+                <img
+                  src={COMPANIES.construction.logo}
+                  alt={COMPANIES.construction.name}
+                  className="max-h-14 w-auto max-w-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-1">Phillips Construction</h3>
+              <p className="text-sm text-slate-400 mb-4">Building & Restoration Services</p>
+              <div className="flex items-center text-blue-400 text-sm font-medium">
                 <span>Enter Portal</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>

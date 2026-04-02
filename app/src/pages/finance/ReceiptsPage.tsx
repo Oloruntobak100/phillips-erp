@@ -6,7 +6,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  DollarSign, 
   Plus, 
   Search, 
   CheckCircle2,

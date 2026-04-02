@@ -10,7 +10,7 @@ import {
   Briefcase, 
   Users, 
   FileText, 
-  DollarSign, 
+  PoundSterling, 
   Truck, 
   HardHat, 
   Calendar,
@@ -64,11 +64,11 @@ const NAVIGATION_ITEMS: NavItem[] = [
   {
     id: 'finance',
     label: 'Finance',
-    icon: DollarSign,
+    icon: PoundSterling,
     href: '/finance',
     children: [
       { id: 'invoices', label: 'Sales Invoices', icon: FileText, href: '/finance/invoices' },
-      { id: 'receipts', label: 'Receipts', icon: DollarSign, href: '/finance/receipts' },
+      { id: 'receipts', label: 'Receipts', icon: PoundSterling, href: '/finance/receipts' },
       { id: 'purchase-invoices', label: 'Purchase Invoices', icon: FileText, href: '/finance/purchase-invoices' },
       { id: 'cis-returns', label: 'CIS Returns', icon: FileText, href: '/finance/cis-returns' },
     ],

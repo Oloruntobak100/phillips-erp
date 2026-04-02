@@ -261,48 +261,6 @@ export const EntitySwitcher: React.FC = () => {
                     variants={itemVariants}
                     initial="hidden"
                     animate="visible"
-                    onClick={() => handleSwitch('construction')}
-                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 ${
-                      activeCompanyType === 'construction'
-                        ? 'bg-blue-500/20 border border-blue-500/50'
-                        : 'hover:bg-slate-800/50 border border-transparent'
-                    }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex h-10 w-[7.5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white px-1.5">
-                      <img
-                        src={COMPANIES.construction.logo}
-                        alt={COMPANIES.construction.shortName}
-                        className="max-h-9 w-auto max-w-full object-contain"
-                      />
-                    </div>
-                    
-                    <div className="flex-1 text-left">
-                      <p className="text-sm font-medium text-white">
-                        Phillips Construction
-                      </p>
-                      <p className="text-xs text-slate-400">
-                        Active Operations
-                      </p>
-                    </div>
-                    
-                    {activeCompanyType === 'construction' && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center"
-                      >
-                        <Check className="w-3 h-3 text-white" />
-                      </motion.div>
-                    )}
-                  </motion.button>
-                  
-                  <motion.button
-                    custom={1}
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="visible"
                     onClick={() => handleSwitch('environmental')}
                     className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 ${
                       activeCompanyType === 'environmental'
@@ -334,6 +292,48 @@ export const EntitySwitcher: React.FC = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         className="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center"
+                      >
+                        <Check className="w-3 h-3 text-white" />
+                      </motion.div>
+                    )}
+                  </motion.button>
+                  
+                  <motion.button
+                    custom={1}
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    onClick={() => handleSwitch('construction')}
+                    className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 ${
+                      activeCompanyType === 'construction'
+                        ? 'bg-blue-500/20 border border-blue-500/50'
+                        : 'hover:bg-slate-800/50 border border-transparent'
+                    }`}
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex h-10 w-[7.5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white px-1.5">
+                      <img
+                        src={COMPANIES.construction.logo}
+                        alt={COMPANIES.construction.shortName}
+                        className="max-h-9 w-auto max-w-full object-contain"
+                      />
+                    </div>
+                    
+                    <div className="flex-1 text-left">
+                      <p className="text-sm font-medium text-white">
+                        Phillips Construction
+                      </p>
+                      <p className="text-xs text-slate-400">
+                        Active Operations
+                      </p>
+                    </div>
+                    
+                    {activeCompanyType === 'construction' && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center"
                       >
                         <Check className="w-3 h-3 text-white" />
                       </motion.div>

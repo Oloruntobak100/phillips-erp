@@ -31,16 +31,16 @@ const SignUpPage: React.FC = () => {
       >
         <div className="mx-auto mb-10 flex h-14 max-w-sm items-center justify-center gap-3 rounded-2xl bg-slate-900/80 px-3 py-2 ring-1 ring-slate-800">
           <img
-            src={COMPANIES.construction.logo}
-            alt={COMPANIES.construction.name}
+            src={COMPANIES.environmental.logo}
+            alt={COMPANIES.environmental.name}
             className="h-10 w-auto max-w-[42%] object-contain"
           />
           <span className="text-slate-600" aria-hidden>
             |
           </span>
           <img
-            src={COMPANIES.environmental.logo}
-            alt={COMPANIES.environmental.name}
+            src={COMPANIES.construction.logo}
+            alt={COMPANIES.construction.name}
             className="h-10 w-auto max-w-[42%] object-contain"
           />
         </div>
