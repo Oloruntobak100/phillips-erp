@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Leaf, ArrowRight } from 'lucide-react';
-import { useEntityStore } from '@/store/entityStore';
+import { ArrowRight } from 'lucide-react';
+import { useEntityStore, COMPANIES } from '@/store/entityStore';
 
 interface WelcomeScreenProps {
   onComplete: () => void;
@@ -29,12 +29,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-            className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center"
-            style={{
-              background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)',
-            }}
+            className="mx-auto mb-6 flex h-16 max-w-xs items-center justify-center gap-4 rounded-2xl bg-slate-900/80 px-4 py-2 ring-1 ring-slate-800"
           >
-            <Building2 className="w-10 h-10 text-white" />
+            <img
+              src={COMPANIES.construction.logo}
+              alt={COMPANIES.construction.name}
+              className="h-12 w-auto max-w-[45%] object-contain"
+            />
+            <span className="text-slate-600" aria-hidden>
+              |
+            </span>
+            <img
+              src={COMPANIES.environmental.logo}
+              alt={COMPANIES.environmental.name}
+              className="h-12 w-auto max-w-[45%] object-contain"
+            />
           </motion.div>
           <h1 className="text-4xl font-bold text-white mb-2">Phillips Data Stream</h1>
           <p className="text-slate-400">Select your company to continue</p>
@@ -54,8 +63,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
-                <Building2 className="w-7 h-7 text-blue-400" />
+              <div className="mb-4 flex h-16 w-full items-center justify-center rounded-xl bg-white px-3 py-2 ring-1 ring-slate-800">
+                <img
+                  src={COMPANIES.construction.logo}
+                  alt={COMPANIES.construction.name}
+                  className="max-h-14 w-auto max-w-full object-contain"
+                />
               </div>
               <h3 className="text-xl font-semibold text-white mb-1">Phillips Construction</h3>
               <p className="text-sm text-slate-400 mb-4">Building & Restoration Services</p>
@@ -78,8 +91,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onComplete }) => {
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-teal-500/20 flex items-center justify-center mb-4">
-                <Leaf className="w-7 h-7 text-teal-400" />
+              <div className="mb-4 flex h-16 w-full items-center justify-center rounded-xl bg-white px-3 py-2 ring-1 ring-slate-800">
+                <img
+                  src={COMPANIES.environmental.logo}
+                  alt={COMPANIES.environmental.name}
+                  className="max-h-14 w-auto max-w-full object-contain"
+                />
               </div>
               <h3 className="text-xl font-semibold text-white mb-1">Phillips Barnes Environmental</h3>
               <p className="text-sm text-slate-400 mb-4">Environmental Services</p>

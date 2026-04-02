@@ -111,14 +111,18 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) =
           
           <div className="flex items-center gap-3">
             <motion.div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              className="h-10 max-w-[200px] flex items-center justify-start rounded-xl px-1.5"
               style={{ 
-                background: theme.gradient,
+                background: 'rgba(30, 41, 59, 0.6)',
                 boxShadow: `0 0 20px ${theme.glow}` 
               }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
             >
-              <span className="text-lg font-bold text-white">P</span>
+              <img
+                src={activeCompany.logo}
+                alt={activeCompany.name}
+                className="h-9 w-auto max-w-[190px] object-contain object-left"
+              />
             </motion.div>
             <div className="hidden md:block">
               <h1 className="text-lg font-bold text-white">Data Stream</h1>

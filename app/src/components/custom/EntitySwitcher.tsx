@@ -6,7 +6,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Building2, Leaf, ChevronDown, Check } from 'lucide-react';
+import { ChevronDown, Check } from 'lucide-react';
 import { 
   useEntityStore, 
   COMPANIES, 
@@ -106,19 +106,19 @@ const TransitionOverlay: React.FC<{ targetType: CompanyType }> = ({ targetType }
           transition={{ duration: 0.3 }}
         >
           <motion.div
-            className="w-24 h-24 rounded-2xl flex items-center justify-center mb-4"
+            className="mb-4 flex h-24 w-64 max-w-[90vw] items-center justify-center rounded-2xl bg-white px-4 py-3"
             style={{ 
-              background: theme.gradient,
               boxShadow: `0 0 60px ${theme.glow}` 
             }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, ease: 'easeInOut' }}
+            initial={{ scale: 0.92 }}
+            animate={{ scale: [0.92, 1, 1] }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            {targetType === 'construction' ? (
-              <Building2 className="w-12 h-12 text-white" />
-            ) : (
-              <Leaf className="w-12 h-12 text-white" />
-            )}
+            <img
+              src={COMPANIES[targetType].logo}
+              alt={COMPANIES[targetType].shortName}
+              className="max-h-20 w-auto max-w-full object-contain"
+            />
           </motion.div>
           
           <motion.p
@@ -206,18 +206,13 @@ export const EntitySwitcher: React.FC = () => {
           }}
           whileTap={{ scale: 0.98 }}
         >
-          <motion.div
-            className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: theme.gradient }}
-            animate={{ rotate: isSwitcherOpen ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {activeCompanyType === 'construction' ? (
-              <Building2 className="w-4 h-4 text-white" />
-            ) : (
-              <Leaf className="w-4 h-4 text-white" />
-            )}
-          </motion.div>
+          <div className="flex h-8 max-w-[120px] items-center justify-center overflow-hidden rounded-lg bg-white/95 px-1">
+            <img
+              src={activeCompany.logo}
+              alt={activeCompany.shortName}
+              className="h-7 w-auto max-w-[112px] object-contain"
+            />
+          </div>
           
           <div className="flex flex-col items-start">
             <span className="text-xs text-slate-400 uppercase tracking-wider">Current Entity</span>
@@ -275,11 +270,12 @@ export const EntitySwitcher: React.FC = () => {
                     whileHover={{ x: 4 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div 
-                      className="w-10 h-10 rounded-lg flex items-center justify-center"
-                      style={{ background: CONSTRUCTION_THEME.gradient }}
-                    >
-                      <Building2 className="w-5 h-5 text-white" />
+                    <div className="flex h-10 w-[7.5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white px-1.5">
+                      <img
+                        src={COMPANIES.construction.logo}
+                        alt={COMPANIES.construction.shortName}
+                        className="max-h-9 w-auto max-w-full object-contain"
+                      />
                     </div>
                     
                     <div className="flex-1 text-left">
@@ -316,11 +312,12 @@ export const EntitySwitcher: React.FC = () => {
                     whileHover={{ x: 4 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div 
-                      className="w-10 h-10 rounded-lg flex items-center justify-center"
-                      style={{ background: ENVIRONMENTAL_THEME.gradient }}
-                    >
-                      <Leaf className="w-5 h-5 text-white" />
+                    <div className="flex h-10 w-[7.5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white px-1.5">
+                      <img
+                        src={COMPANIES.environmental.logo}
+                        alt={COMPANIES.environmental.shortName}
+                        className="max-h-9 w-auto max-w-full object-contain"
+                      />
                     </div>
                     
                     <div className="flex-1 text-left">
